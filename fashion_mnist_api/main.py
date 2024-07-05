@@ -17,10 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-prediccion_fashion_mnist = APIRouter()
+prediccion_fashion_mnist_router = APIRouter()
 
 
-@prediccion_fashion_mnist.post('/prediccion_fashion_mnist', status_code=200)
+@prediccion_fashion_mnist_router.post('/prediccion_fashion_mnist', status_code=200)
 async def prediccion_fashion_mnist(
         response: Response,
         file: UploadFile):
@@ -34,7 +34,7 @@ async def prediccion_fashion_mnist(
 
     return data
 
-app.include_router(prediccion_fashion_mnist)
+app.include_router(prediccion_fashion_mnist_router)
 
 if __name__ == '__main__':
     uvicorn.run(app)
